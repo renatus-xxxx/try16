@@ -13,7 +13,7 @@ Can you become the top of the top?
 # Usage
 Launch the program and start **firing**.
 - The timer runs for exactly **10.0 seconds**.  
-- Your **elapsed time** and **total fire count** are updated every **seconds**.  
+- Your **elapsed time** and **total shots count** are updated.  
 - At the end, you'll see your **average shots per second**.
 
 ## Download
