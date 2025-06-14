@@ -10,6 +10,8 @@ int main(int argc, char* argv[]) {
   clock_t start       = platform_clock();
   clock_t last        = platform_clock();
   float   elapsed_sec = platform_elapsed(start, last);
+  unsigned char prev_trig = 0;
+  unsigned int  count     = 0;
   while (elapsed_sec < 10.0f) {
     clock_t now   = platform_clock();
     while(platform_elapsed(last, now) < (1.0f / 60.0f)) { // NTSC Only
@@ -17,7 +19,12 @@ int main(int argc, char* argv[]) {
     }
     last = platform_clock();
     elapsed_sec = platform_elapsed(start, now);
-    printf("\rElapsed: %.1f sec     ", elapsed_sec);
+    unsigned char trig = platform_gttrig(0);
+    if (!prev_trig && trig) {
+      count++;
+    }
+    prev_trig = trig;
+    printf("\rElapsed: %.1f sec   Count: %d      ", elapsed_sec, count);
     fflush(stdout);
   }
   printf("\nDone.\n");
