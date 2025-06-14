@@ -5,9 +5,9 @@
 <img src="https://raw.githubusercontent.com/renatus-xxxx/try16/main/images/tether.png" title="tether" />
 
 # try16
-A retro-style rapid fire counter. Fire fast, count faster. Be the one!
-Can you become the top of the top? 
-10 seconds. One goal. Maximum firepower.
+A retro-style rapid fire counter. Fire fast, count faster. Be the one!  
+Can you become the top of the top?  
+10 seconds. One goal. Maximum firepower.  
 **Push your limits. Break the records.**
 
 # Usage
