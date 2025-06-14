@@ -27,6 +27,8 @@ int main(int argc, char* argv[]) {
     printf("\rElapsed: %.1f sec   Count: %d      ", elapsed_sec, count);
     fflush(stdout);
   }
+  float avg = count / 10.0f;
+  printf("\nAvg %.2f shots/sec\n", avg);
   printf("\nDone.\n");
   return 0;
 }
