@@ -19,7 +19,7 @@ int main(int argc, char* argv[]) {
     }
     last = platform_clock();
     elapsed_sec = platform_elapsed(start, now);
-    unsigned char trig = platform_gttrig(0);
+    unsigned char trig = platform_gttrig(1);
     if (!prev_trig && trig) {
       count++;
     }

@@ -79,9 +79,9 @@ float platform_elapsed(clock_t start, clock_t end) {
   return ((end - start) & 0xFFFF) / (float)CLOCKS_PER_SEC;
 }
 
-unsigned char platform_gttrig(int no) {
+unsigned char platform_gttrig(char no) {
   struct regs r;
-  r.a = (char)no;
+  r.a = no;
   calbio(0x00d8, &r); // MSX BIOS call 0x00D8 = GTTRIG
   return (r.a != 0);
 }
