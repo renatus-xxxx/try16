@@ -1,4 +1,4 @@
-﻿[日本語版はこちら](./README.ja.md)
+﻿[English version is here](./README.md)
 
 [![windows](https://github.com/renatus-xxxx/try16/workflows/windows/badge.svg)](https://github.com/renatus-xxxx/try16/actions?query=workflow%3Awindows)
 [![macos](https://github.com/renatus-xxxx/try16/workflows/macos/badge.svg)](https://github.com/renatus-xxxx/try16/actions?query=workflow%3Amacos)
@@ -7,16 +7,16 @@
 <img src="https://raw.githubusercontent.com/renatus-xxxx/try16/main/images/tether.png" title="tether" />
 
 # try16
-A retro-style rapid fire counter. Fire fast, count faster. Be the one!  
-Can you become the top of the top?  
-10 seconds. One goal. Maximum firepower.  
-**Push your limits. Break the records.**
+レトロスタイルの連射カウンター。速く撃て、さらに速く数えろ。頂点を目指せ！  
+君は“top of the top”になれるか？  
+10秒間、目標はひとつ。最大限の連射力を叩き出せ。  
+**限界を超えろ。記録を打ち破れ。**
 
-# Usage
-Launch the program(try16) and start **firing**.
-- The timer runs for exactly **10.0 seconds**.  
-- Your **elapsed time** and **total shots count** are updated.  
-- At the end, you'll see your **average shots per second**.
+# 使い方
+プログラムを起動し、**連射**を開始します。
+- タイマーは正確に **10.0 秒間** 実行されます  
+- **経過時間**と**連射回数**が表示されます  
+- 終了時に、**平均連射速度（shots/sec）** が表示されます
 
 ## Download
 - [try on webmsx](https://webmsx.org/?MACHINE=MSXTRJ&DISKA_URL=https://raw.githubusercontent.com/renatus-xxxx/try16/main/bin/TRY16.DSK&FAST_BOOT)
