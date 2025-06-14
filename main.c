@@ -17,7 +17,8 @@ int main(int argc, char* argv[]) {
     }
     last = platform_clock();
     elapsed_sec = platform_elapsed(start, now);
-    printf("Elapsed: %.1f sec\n", elapsed_sec);
+    printf("\rElapsed: %.1f sec     ", elapsed_sec);
+    fflush(stdout);
   }
   printf("\nDone.\n");
   return 0;
