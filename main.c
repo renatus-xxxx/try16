@@ -7,6 +7,13 @@
 
 int main(int argc, char* argv[]) {
   printf("Try16: A retro-style rapid fire counter.\n");
+  printf("Strike SPACE key or Trigger-A button to start\n");
+  int trigger_source = -1;
+  while (trigger_source < 0) {
+    if (platform_gttrig(0)) trigger_source = 0;      // SPACE key
+    else if (platform_gttrig(1)) trigger_source = 1; // Port A
+    else if (platform_gttrig(2)) trigger_source = 2; // Port B
+  }
   clock_t start = platform_clock();
   clock_t now   = start;
   clock_t last  = start;
@@ -14,7 +21,7 @@ int main(int argc, char* argv[]) {
   unsigned char prev = 0;
   uint8_t show_flag = 0;
   while (platform_elapsed_ticks(start, platform_clock()) < 600) {
-    unsigned char trig = platform_gttrig(1);
+    unsigned char trig = platform_gttrig(trigger_source);
     if (!prev && trig) count++;
     prev = trig;
     now = platform_clock();
@@ -31,8 +38,7 @@ int main(int argc, char* argv[]) {
     }
   }
   printf("\r10.0 sec %3d shots     \n", count); // Ensure the final "10.0 sec" status is displayed after measurement ends
-  int avg10 = count * 10;                       // Not use float
-  printf("Avg %d.%d shots/sec\n", avg10 / 10, avg10 % 10);
+  printf("Avg %d.%01d shots/sec\n", count / 10, count % 10); // Avoid float usage
   printf("Done.");
   return 0;
 }
