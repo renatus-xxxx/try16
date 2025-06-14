@@ -7,13 +7,11 @@
 
 int main(int argc, char* argv[]) {
   printf("Try16: A retro-style rapid fire counter.\n");
-
   clock_t start = platform_clock();
-  clock_t now, last = start;
-
+  clock_t now   = start;
+  clock_t last  = start;
   unsigned int count = 0;
   unsigned char prev = 0;
-
   while (platform_elapsed_ticks(start, platform_clock()) < 600) {
     unsigned char trig = platform_gttrig(1);
     if (!prev && trig) count++;
