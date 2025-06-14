@@ -31,7 +31,8 @@ int main(int argc, char* argv[]) {
     }
   }
   printf("\r10.0 sec %3d shots     \n", count); // Ensure the final "10.0 sec" status is displayed after measurement ends
-  printf("Avg %.2f shots/sec\n", count / 10.0f);
+  int avg10 = count * 10;                       // Not use float
+  printf("Avg %d.%d shots/sec\n", avg10 / 10, avg10 % 10);
   printf("Done.");
   return 0;
 }
