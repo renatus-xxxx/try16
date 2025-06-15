@@ -32,8 +32,8 @@ int main(int argc, char* argv[]) {
     if (show_flag) {
       show_flag = 0;
       uint16_t ticks = platform_elapsed_ticks(start, now);
-      int elapsed10 = (ticks * 10) / CLOCKS_PER_SEC;
-      printf("\r%2d.%d sec %3d shots     ", elapsed10 / 10, elapsed10 % 10, count);
+      int elapsed = (ticks) / CLOCKS_PER_SEC;
+      printf("\r%2d.0 sec %3d shots     ", elapsed, count);
       fflush(stdout);
     }
   }
