@@ -1,4 +1,4 @@
-zcc +msx -create-app -O3 -subtype=msxdos -DMSX -lm main.c -bn TRY16.COM
+zcc +msx -create-app -O3 -subtype=msxdos -DMSX -lm try16.c -bn TRY16.COM
 del TRY16.img
 move /y TRY16.COM bin
 cd bin
