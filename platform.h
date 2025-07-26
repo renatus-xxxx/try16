@@ -109,7 +109,11 @@ uint16_t platform_elapsed_ticks(clock_t start, clock_t end) {
 }
 
 static inline unsigned char platform_gttrig(int no) {
-  return 0; // dummy trigger for non-MSX
+#if X68K
+  printf("X68K\n");
+#else
+  return 0; // dummy trigger for non MSX/X68k
+#endif
 }
 
 #endif

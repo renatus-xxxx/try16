@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.6)
 
 project(try16)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE ${PROJECT_SOURCE_DIR}/bin)
-add_executable(try16 main.c
+add_executable(try16 try16.c
 )
 set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT try16)
 set(CMAKE_CONFIGURATION_TYPES "Debug;Release")
