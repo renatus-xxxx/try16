@@ -5,7 +5,7 @@ CC = $(CROSS)gcc
 AS = $(CROSS)as
 LD = $(CROSS)gcc
 
-CFLAGS = -m68000 -O2 -g
+CFLAGS = -m68000 -O2 -g -DX68K
 LDFLAGS =
 
 all: $(TARGET)
