@@ -22,10 +22,16 @@ int main(int argc, char* argv[]) {
   uint8_t show_flag = 0;
   while (platform_elapsed_ticks(start, platform_clock()) < 600) {
     now = platform_clock();
+#if X68K
+    printf("1st now=%d\n", now);
+#endif
     unsigned char trig = platform_gttrig(trigger_source);
     if (!prev && trig) count++;
     prev = trig;
     while(platform_clock() == now) { // wait 1/60 sec
+#if X68K
+    printf("now=%d\n", now);
+#endif
     }
     if (platform_elapsed_ticks(last, now) >= 60) {
       show_flag = 1;

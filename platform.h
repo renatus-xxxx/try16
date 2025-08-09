@@ -93,9 +93,13 @@ unsigned char platform_gttrig(int no) {
 
 #include <time.h>
 #if X68K
-#include <iocslib.h>
+#include <x68k/iocs.h>
+#undef  CLOCKS_PER_SEC
+#define CLOCKS_PER_SEC 100
+clock_t clock(void) {
+  return (clock_t)(_iocs_ontime());
+}
 #endif
-//typedef clock_t clock_t;
 
 clock_t platform_clock(void) {
   return clock();
@@ -114,7 +118,12 @@ static inline unsigned char platform_gttrig(int no) {
 #if X68K
   if (no > 0) { // no=0 keyboard
     no = no -1;
-    return (_iocs_joyget(no) & 0x20);
+    if (!(_iocs_joyget(no) & 0x20)) {
+      printf("A-Button\n");
+    }else {
+      printf("Non A-Button\n");
+    }
+    return !(_iocs_joyget(no) & 0x20);
   }
 #else
   return 0; // dummy trigger for non MSX/X68k
