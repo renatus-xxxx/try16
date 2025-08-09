@@ -93,11 +93,34 @@ unsigned char platform_gttrig(int no) {
 
 #include <time.h>
 #if X68K
+
 #include <x68k/iocs.h>
+
 #undef  CLOCKS_PER_SEC
 #define CLOCKS_PER_SEC 100
+
+static inline uint32_t trap_ontime(void) {
+  uint32_t cs;
+  __asm__ volatile(
+    "moveq  #0x7F,%%d0 \n\t"   // _ONTIME
+    "trap   #15        \n\t"   // IOCS
+    "move.l %%d0,%0    \n\t"
+    : "=d"(cs)
+    :
+    : "d0","d1","a0","cc","memory"
+  );
+  return cs;
+}
+
 clock_t clock(void) {
-  return (clock_t)(_iocs_ontime());
+  static uint32_t t0 = 0;
+  uint32_t now = trap_ontime();
+  if (t0 == 0) {
+    t0 = now; // initial time
+    return 0;
+  }
+  uint32_t diff_cs = now - t0;
+  return (clock_t)diff_cs;    // CLOCK
 }
 #endif
 
@@ -118,11 +141,6 @@ static inline unsigned char platform_gttrig(int no) {
 #if X68K
   if (no > 0) { // no=0 keyboard
     no = no -1;
-    if (!(_iocs_joyget(no) & 0x20)) {
-      printf("A-Button\n");
-    }else {
-      printf("Non A-Button\n");
-    }
     return !(_iocs_joyget(no) & 0x20);
   }
 #else
