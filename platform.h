@@ -92,7 +92,9 @@ unsigned char platform_gttrig(int no) {
 #else // Non-MSX
 
 #include <time.h>
-
+#if X68K
+#include <iocslib.h>
+#endif
 //typedef clock_t clock_t;
 
 clock_t platform_clock(void) {
@@ -110,7 +112,10 @@ uint16_t platform_elapsed_ticks(clock_t start, clock_t end) {
 
 static inline unsigned char platform_gttrig(int no) {
 #if X68K
-  printf("X68K\n");
+  if (no > 0) { // no=0 keyboard
+    no = no -1;
+    return (_iocs_joyget(no) & 0x20);
+  }
 #else
   return 0; // dummy trigger for non MSX/X68k
 #endif
